@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>易识测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>易识测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2023-04-25 21:26:32</p>
+<p class='attribute'><strong>Duration:</strong> 0:08:38.683464</p>
+<p class='attribute'><strong>Status:</strong> Pass 53 Error 2</p>
+
+<p class='description'>易识测试结果说明</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='passClass'>
+    <td>yishi_alogin.Yishi_Login</td>
+    <td>6</td>
+    <td>6</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c1',6)">Detail</a></td>
+</tr>
+
+<tr id='pt1.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Login_01: 正确用户名，正确密码</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Login_02: 用户名错误</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Login_03: 密码错误</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Login_04: 密码为空</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Login_05: 用户名为空</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt1.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_Login_06: 用户名密码均为空</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='passClass'>
+    <td>yishi_aregister.Yishi_Register</td>
+    <td>8</td>
+    <td>8</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',8)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_register_01: 跳转修改密码页</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_register_02: 成功修改密码</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_register_03: 用户名错误</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_register_04: 密保密码错误</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_register_05: 用户名为空</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_register_06: 新密码为空</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_register_07: 密保密码为空</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt2.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_register_08: 直接返回登录页面</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>yishi_bfirmware_analysis.Yishi_firmware_analysis</td>
+    <td>26</td>
+    <td>25</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c3',26)">Detail</a></td>
+</tr>
+
+<tr id='pt3.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_01: 跳转上传固件页面</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft3.2' class='none'>
+    <td class='errorCase'><div class='testcase'>test_upload_02: 成功上传固件任务-全选不关联固件库</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.2')" >
+        error</a>
+
+    <div id='div_ft3.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.2: Traceback (most recent call last):
+  File "C:\Tools\UI_firmware_upload\testcases\yishi_bfirmware_analysis.py", line 31, in test_upload_02
+    super().task_start()
+  File "C:\Tools\UI_firmware_upload\common\browser.py", line 148, in task_start
+    self.driver.find_element(By.XPATH,'//*[@id="#icon-play"]').click()
+  File "C:\Tools\UI_firmware_upload\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 861, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+  File "C:\Tools\UI_firmware_upload\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 444, in execute
+    self.error_handler.check_response(response)
+  File "C:\Tools\UI_firmware_upload\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 249, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="#icon-play"]"}
+  (Session info: chrome=112.0.5615.138)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00CADCE3+50899]
+	(No symbol) [0x00C3E111]
+	(No symbol) [0x00B45588]
+	(No symbol) [0x00B708F9]
+	(No symbol) [0x00B70AFB]
+	(No symbol) [0x00B9F902]
+	(No symbol) [0x00B8B944]
+	(No symbol) [0x00B9E01C]
+	(No symbol) [0x00B8B6F6]
+	(No symbol) [0x00B67708]
+	(No symbol) [0x00B6886D]
+	GetHandleVerifier [0x00F13EAE+2566302]
+	GetHandleVerifier [0x00F492B1+2784417]
+	GetHandleVerifier [0x00F4327C+2759788]
+	GetHandleVerifier [0x00D45740+672048]
+	(No symbol) [0x00C48872]
+	(No symbol) [0x00C441C8]
+	(No symbol) [0x00C442AB]
+	(No symbol) [0x00C371B7]
+	BaseThreadInitThunk [0x760A7D49+25]
+	RtlInitializeExceptionChain [0x7706B74B+107]
+	RtlClearBits [0x7706B6CF+191]
+
+Traceback (most recent call last):
+  File "C:\Tools\UI_firmware_upload\testcases\yishi_bfirmware_analysis.py", line 31, in test_upload_02
+    super().task_start()
+  File "C:\Tools\UI_firmware_upload\common\browser.py", line 148, in task_start
+    self.driver.find_element(By.XPATH,'//*[@id="#icon-play"]').click()
+  File "C:\Tools\UI_firmware_upload\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 861, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+  File "C:\Tools\UI_firmware_upload\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 444, in execute
+    self.error_handler.check_response(response)
+  File "C:\Tools\UI_firmware_upload\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 249, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="#icon-play"]"}
+  (Session info: chrome=112.0.5615.138)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00CADCE3+50899]
+	(No symbol) [0x00C3E111]
+	(No symbol) [0x00B45588]
+	(No symbol) [0x00B708F9]
+	(No symbol) [0x00B70AFB]
+	(No symbol) [0x00B9F902]
+	(No symbol) [0x00B8B944]
+	(No symbol) [0x00B9E01C]
+	(No symbol) [0x00B8B6F6]
+	(No symbol) [0x00B67708]
+	(No symbol) [0x00B6886D]
+	GetHandleVerifier [0x00F13EAE+2566302]
+	GetHandleVerifier [0x00F492B1+2784417]
+	GetHandleVerifier [0x00F4327C+2759788]
+	GetHandleVerifier [0x00D45740+672048]
+	(No symbol) [0x00C48872]
+	(No symbol) [0x00C441C8]
+	(No symbol) [0x00C442AB]
+	(No symbol) [0x00C371B7]
+	BaseThreadInitThunk [0x760A7D49+25]
+	RtlInitializeExceptionChain [0x7706B74B+107]
+	RtlClearBits [0x7706B6CF+191]
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_03: 成功上传固件任务-关联固件库</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_04: 成功上传固件任务-不勾选 软件成分探测& CVE漏洞查找  插件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_05: 成功上传固件任务-不勾选  CVE漏洞查找  插件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_06: 成功上传固件任务-不勾选 文件类型分析 / CPU架构分析 /CWE缺陷查找/ 文件哈希值分析 插件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_07: 成功上传固件任务-不勾选 CPU架构分析 插件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_08: 成功上传固件任务-不勾选 CWE缺陷查找 插件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_09: 成功上传固件任务-不勾选 文件哈希值分析 插件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_10: 成功上传固件任务-不勾选 签名分析 插件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_11: 成功上传固件任务-不勾选 加密算法分析 插件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_12: 成功上传固件任务-不勾选  ELF分析 插件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_13: 成功上传固件任务-不勾选 IP地址URI和Email探测 插件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_14: 成功上传固件任务-不勾选 用户名和密码探测 插件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_15: 成功上传固件任务-不勾选 安全编译选项识别 插件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.16' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_16: 上传固件任务失败-不勾选插件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.17' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_17: 上传固件任务失败-不上传文件</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.18' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_18: 上传固件任务失败-不输入版本名称</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.19' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_19: 上传固件任务失败-不输入厂商名称</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.20' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_20: 上传固件任务失败-版本为空格</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.21' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_21: 上传固件任务失败-厂商为空格</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.22' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_22: 可取消上传固件任务</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.23' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_23: 覆盖相同任务</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.24' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_24: 任务名称筛选任务</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.25' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_25: 时间筛选任务</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt3.26' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_upload_26: 输入厂商筛选任务</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>yishi_compare_task.Yishi_compare</td>
+    <td>15</td>
+    <td>14</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c4',15)">Detail</a></td>
+</tr>
+
+<tr id='pt4.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_01: 跳转创建对比任务页面</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_02: 跳转选择对比任务页面</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_03: 成功创建对比任务</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_04: 全选创建对比任务</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='ft4.5' class='none'>
+    <td class='errorCase'><div class='testcase'>test_compare_05: 筛选任务创建对比任务</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.5')" >
+        error</a>
+
+    <div id='div_ft4.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.5: Traceback (most recent call last):
+  File "C:\Tools\UI_firmware_upload\testcases\yishi_compare_task.py", line 81, in test_compare_05
+    super().compare_task_choose(1)
+  File "C:\Tools\UI_firmware_upload\common\browser.py", line 180, in compare_task_choose
+    self.driver.find_element(click_xpath['element_locator'],'//tbody/tr[{}]//span[@class="el-checkbox__input"]'.format(n)).click()
+  File "C:\Tools\UI_firmware_upload\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 861, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+  File "C:\Tools\UI_firmware_upload\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 444, in execute
+    self.error_handler.check_response(response)
+  File "C:\Tools\UI_firmware_upload\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 249, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//tbody/tr[1]//span[@class="el-checkbox__input"]"}
+  (Session info: chrome=112.0.5615.138)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00CADCE3+50899]
+	(No symbol) [0x00C3E111]
+	(No symbol) [0x00B45588]
+	(No symbol) [0x00B708F9]
+	(No symbol) [0x00B70AFB]
+	(No symbol) [0x00B9F902]
+	(No symbol) [0x00B8B944]
+	(No symbol) [0x00B9E01C]
+	(No symbol) [0x00B8B6F6]
+	(No symbol) [0x00B67708]
+	(No symbol) [0x00B6886D]
+	GetHandleVerifier [0x00F13EAE+2566302]
+	GetHandleVerifier [0x00F492B1+2784417]
+	GetHandleVerifier [0x00F4327C+2759788]
+	GetHandleVerifier [0x00D45740+672048]
+	(No symbol) [0x00C48872]
+	(No symbol) [0x00C441C8]
+	(No symbol) [0x00C442AB]
+	(No symbol) [0x00C371B7]
+	BaseThreadInitThunk [0x760A7D49+25]
+	RtlInitializeExceptionChain [0x7706B74B+107]
+	RtlClearBits [0x7706B6CF+191]
+
+Traceback (most recent call last):
+  File "C:\Tools\UI_firmware_upload\testcases\yishi_compare_task.py", line 81, in test_compare_05
+    super().compare_task_choose(1)
+  File "C:\Tools\UI_firmware_upload\common\browser.py", line 180, in compare_task_choose
+    self.driver.find_element(click_xpath['element_locator'],'//tbody/tr[{}]//span[@class="el-checkbox__input"]'.format(n)).click()
+  File "C:\Tools\UI_firmware_upload\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 861, in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+  File "C:\Tools\UI_firmware_upload\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 444, in execute
+    self.error_handler.check_response(response)
+  File "C:\Tools\UI_firmware_upload\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 249, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//tbody/tr[1]//span[@class="el-checkbox__input"]"}
+  (Session info: chrome=112.0.5615.138)
+Stacktrace:
+Backtrace:
+	GetHandleVerifier [0x00CADCE3+50899]
+	(No symbol) [0x00C3E111]
+	(No symbol) [0x00B45588]
+	(No symbol) [0x00B708F9]
+	(No symbol) [0x00B70AFB]
+	(No symbol) [0x00B9F902]
+	(No symbol) [0x00B8B944]
+	(No symbol) [0x00B9E01C]
+	(No symbol) [0x00B8B6F6]
+	(No symbol) [0x00B67708]
+	(No symbol) [0x00B6886D]
+	GetHandleVerifier [0x00F13EAE+2566302]
+	GetHandleVerifier [0x00F492B1+2784417]
+	GetHandleVerifier [0x00F4327C+2759788]
+	GetHandleVerifier [0x00D45740+672048]
+	(No symbol) [0x00C48872]
+	(No symbol) [0x00C441C8]
+	(No symbol) [0x00C442AB]
+	(No symbol) [0x00C371B7]
+	BaseThreadInitThunk [0x760A7D49+25]
+	RtlInitializeExceptionChain [0x7706B74B+107]
+	RtlClearBits [0x7706B6CF+191]
+
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt4.6' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_06: 创建失败：只选择一个任务创建对比报告。</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.7' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_07: 创建成功：筛选时间创建对比报告</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.8' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_08: 创建成功：筛选厂商创建对比报告</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.9' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_09: 创建成功：厂商/任务名/时间组合筛选创建对比报告</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.10' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_10: 筛选任务：输入不存在的任务名</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.11' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_11: 筛选任务：输入不存在任务的时间段</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.12' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_12: 筛选任务：输入不存在的厂商</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.13' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_13: 跳转页面</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.14' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_14: 翻页</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='pt4.15' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_compare_15: 查看对比报告</div></td>
+    <td colspan='5' align='center'>pass</td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>55</td>
+    <td>53</td>
+    <td>0</td>
+    <td>2</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
